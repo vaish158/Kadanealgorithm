@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class Kadane {
+      static void maxSubArray(int a[],int size) {
+    	  int max_sum=a[0];
+    	  int max_till_now=0,start=0,end=0,S=0;
+    	  for (int i = 0; i < size; i++)
+          {
+    		  max_till_now = max_till_now + a[i];
+              if ( max_sum< max_till_now) {
+            	  max_sum = max_till_now;
+                  start=S;end=i;
+              }
+              if (max_till_now < 0) {
+            	  max_till_now = 0;
+                  S=i+1;
+              }
+          }
+    	  System.out.println("Maximum integer sum is "+ max_sum);
+    	  System.out.println("Starting index "+start);
+    	  System.out.println("Ending index "+end);
+    	  
+     }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number of elements");
+		int n=sc.nextInt();
+		int[] a=new int[n];
+		System.out.println("Enter the elements");
+		for(int i=0;i<n;i++) {
+			a[i]=sc.nextInt();
+		}
+		maxSubArray(a,n);
+
+	}
+
+}
